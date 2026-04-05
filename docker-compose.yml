@@ -1,0 +1,20 @@
+services:
+  postq-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: postq_site
+    restart: unless-stopped
+    networks:
+      - caddy_net
+    healthcheck:
+      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://localhost:3000/']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  caddy_net:
+    external: true
+    name: remnawave_bot_network
