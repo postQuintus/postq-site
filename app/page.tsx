@@ -118,11 +118,11 @@ export default function HomePage() {
               fontSize: '12px',
               fontWeight: '400',
               letterSpacing: '0.08em',
-              color: '#931b79',
+              color: 'rgba(147, 27, 121, 0.69)',
               textShadow: '0 0 4px rgba(147, 27, 121, 0.18)',
             }}
           >
-            политика конфиденциальности →
+            политика конфиденциальности
           </Link>
         </motion.div>
       </div>

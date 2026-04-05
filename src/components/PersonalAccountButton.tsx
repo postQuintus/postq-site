@@ -8,13 +8,14 @@ export default function PersonalAccountButton() {
             href="https://web.postq.space"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2 text-sm font-medium rounded-lg no-underline focus:outline-none"
+            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 text-sm font-medium rounded-xl no-underline focus:outline-none"
             style={{
                 fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
                 fontSize: '13px',
-                fontWeight: '500',
+                fontWeight: '300',
                 letterSpacing: '0.06em',
                 textShadow: '0 0 8px rgba(207, 0, 163, 0.6)',
                 border: '1.5px solid rgba(207, 0, 163, 0.7)',
@@ -26,7 +27,7 @@ export default function PersonalAccountButton() {
                 transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
             }}
         >
-            ▶ личный кабинет
+            личный кабинет
         </motion.a>
     )
 }
