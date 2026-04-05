@@ -25,7 +25,7 @@ export default function Header() {
                                 className="object-contain"
                             />
                         </div>
-                        <span className="text-base font-eesti-display hidden sm:inline" style={{ color: 'var(--text)' }}>
+                        <span className="text-base font-eesti-display" style={{ color: 'var(--text)' }}>
                             postq vpn
                         </span>
                     </Link>

@@ -94,7 +94,7 @@ html, body {
 html, body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'GT Eesti Pro Text', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
 }
 
