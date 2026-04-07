@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Header from '@/components/Header'
+import VpnStatusWidget from '@/components/VpnStatusWidget'
 
 export default function HomePage() {
   return (
@@ -103,6 +104,8 @@ export default function HomePage() {
         >
           ▶ открыть бота
         </motion.a>
+
+        <VpnStatusWidget />
 
         <motion.div
           initial={{ opacity: 0 }}
