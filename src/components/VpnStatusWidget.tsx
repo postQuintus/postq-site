@@ -2,10 +2,25 @@
 
 import { useEffect, useState } from 'react'
 
-const pulseKeyframes = `
-@keyframes vpn-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.4); }
+const styles = `
+@keyframes vpn-dot-ripple {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+.vpn-dot-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+}
+.vpn-dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: vpn-dot-ripple 1.8s ease-out infinite;
 }
 `
 
@@ -46,7 +61,7 @@ export default function VpnStatusWidget() {
 
   return (
     <>
-      <style>{pulseKeyframes}</style>
+      <style>{styles}</style>
       <a
         href="https://status.postq.space"
         target="_blank"
@@ -63,17 +78,15 @@ export default function VpnStatusWidget() {
           letterSpacing: '0.08em',
         }}
       >
-        <span
-          style={{
-            width: '7px',
-            height: '7px',
+        <span className={`vpn-dot-wrapper${allOnline ? ' vpn-dot-pulse' : ''}`}>
+          <span style={{
+            position: 'absolute',
+            inset: 0,
             borderRadius: '50%',
             background: dotColor,
-            flexShrink: 0,
             boxShadow: `0 0 6px ${dotColor}`,
-            animation: 'vpn-pulse 2s ease-in-out infinite',
-          }}
-        />
+          }} />
+        </span>
         {status.online} из {status.total} серверов работают
       </a>
     </>
