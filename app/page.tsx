@@ -100,24 +100,33 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
+        style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', rowGap: '8px' }}
       >
+        <a
+          href="https://t.me/postq_vpn_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="no-underline"
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.55)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.3)')}
+        >
+          @postq_vpn_bot
+        </a>
+        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
         <Link
           href="/privacy"
           className="no-underline"
-          style={{
-            fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
-            fontSize: '11px',
-            fontWeight: '400',
-            letterSpacing: '0.08em',
-            color: 'rgba(147, 27, 121, 0.3)',
-            whiteSpace: 'nowrap',
-            transition: 'color 0.2s',
-          }}
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
           onMouseEnter={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.55)')}
           onMouseLeave={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.3)')}
         >
           политика конфиденциальности
         </Link>
+        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap' }}>
+          © 2026 postq vpn
+        </span>
       </motion.div>
 
       <style>{`
