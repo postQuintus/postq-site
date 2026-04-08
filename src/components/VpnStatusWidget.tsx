@@ -64,8 +64,6 @@ export default function VpnStatusWidget() {
       <style>{styles}</style>
       <a
         href="https://status.postq.space"
-        target="_blank"
-        rel="noopener noreferrer"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
