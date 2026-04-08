@@ -226,15 +226,40 @@ export default function PrivacyPage() {
         ))}
       </main>
 
+      <style>{`
+        .privacy-footer-link {
+          font-family: 'GT Eesti Pro Display', system-ui, sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.08em;
+          color: rgba(147,27,121,0.3);
+          text-decoration: none;
+          white-space: nowrap;
+          transition: color 0.2s;
+        }
+        .privacy-footer-link:hover { color: rgba(147,27,121,0.55); }
+      `}</style>
       <footer style={{
-        textAlign: 'center', padding: '2rem',
-        color: 'var(--text2)', fontSize: 13,
-        borderTop: '1px solid var(--border)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        gap: '16px', flexWrap: 'wrap', rowGap: '8px',
+        padding: '2rem', borderTop: '1px solid var(--border)',
       }}>
-        © 2026 postq vpn ·{' '}
-        <a href="https://t.me/postq_vpn_bot" style={{ color: 'var(--accent)', textDecoration: 'none' }}>@postq_vpn_bot</a>
-        {' '}·{' '}
-        <Link href="/privacy" style={{ color: 'var(--text2)', textDecoration: 'none' }}>Политика конфиденциальности</Link>
+        <a
+          href="https://t.me/postq_vpn_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="privacy-footer-link"
+        >
+          @postq_vpn_bot
+        </a>
+        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <Link href="/privacy" className="privacy-footer-link">
+          политика конфиденциальности
+        </Link>
+        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap' }}>
+          © 2026 postq vpn
+        </span>
       </footer>
     </>
   )
