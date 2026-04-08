@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'PostQ VPN',
+  title: 'postq vpn',
   description: 'Безопасный и быстрый VPN сервис',
   manifest: '/manifest.json',
   icons: {
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     apple: '/icons/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'PostQ VPN',
+    title: 'postq vpn',
     description: 'Безопасный и быстрый VPN сервис',
     url: 'https://postq.space',
-    siteName: 'PostQ VPN',
+    siteName: 'postq vpn',
   },
 }
 
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   )

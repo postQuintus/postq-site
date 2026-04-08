@@ -1,6 +1,6 @@
 {
-  "name": "PostQ VPN",
-  "short_name": "PostQ",
+  "name": "postq vpn",
+  "short_name": "postq",
   "description": "Безопасный и быстрый VPN сервис",
   "start_url": "/",
   "display": "standalone",
