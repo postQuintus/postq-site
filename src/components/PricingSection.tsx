@@ -60,7 +60,7 @@ export default function PricingSection() {
   const [period, setPeriod] = useState<Period>(1)
 
   return (
-    <section id="pricing" style={{ padding: '60px 0 100px', scrollMarginTop: '64px', position: 'relative', zIndex: 1 }}>
+    <section id="pricing" className="pricing-section" style={{ scrollMarginTop: '64px', position: 'relative', zIndex: 1 }}>
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -149,7 +149,7 @@ export default function PricingSection() {
             return (
               <motion.div
                 key={plan.id}
-                className={plan.popular ? undefined : 'pricing-card-wrap'}
+                className={plan.popular ? 'pricing-card-popular' : 'pricing-card-wrap'}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
@@ -367,6 +367,9 @@ export default function PricingSection() {
       </div>
 
       <style>{`
+        .pricing-section {
+          padding: 60px 0 100px;
+        }
         .pricing-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -380,8 +383,19 @@ export default function PricingSection() {
         @media (max-width: 900px) {
           .pricing-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        .pricing-card-popular:hover {
+          border-color: rgba(207,0,163,0.5) !important;
+        }
+        @media (max-width: 767px) {
+          .pricing-section { padding: 32px 0 48px; }
+        }
         @media (max-width: 520px) {
           .pricing-grid { grid-template-columns: 1fr; }
+          .pricing-card-popular {
+            margin-top: 16px !important;
+            margin-bottom: 0 !important;
+            padding-top: 48px !important;
+          }
         }
       `}</style>
     </section>

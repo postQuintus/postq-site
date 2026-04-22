@@ -39,7 +39,7 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" style={{ padding: '60px 0 100px', position: 'relative', zIndex: 1, scrollMarginTop: '64px' }}>
+    <section id="faq" className="faq-section" style={{ position: 'relative', zIndex: 1, scrollMarginTop: '64px' }}>
       <div className="max-w-3xl mx-auto px-6">
 
         {/* Heading */}
@@ -209,6 +209,13 @@ export default function FaqSection() {
         </motion.div>
 
       </div>
+
+      <style>{`
+        .faq-section { padding: 60px 0 100px; }
+        @media (max-width: 767px) {
+          .faq-section { padding: 32px 0 48px; }
+        }
+      `}</style>
     </section>
   )
 }

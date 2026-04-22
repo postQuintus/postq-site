@@ -251,41 +251,50 @@ export default function HeroPhone() {
             animate={{ opacity: on ? 1 : 0, scale: on ? 1 : 0.7 }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: on ? icon.appearDelay : 0 }}
           >
-          <motion.div
-            animate={{ y: icon.floatY }}
-            transition={{
-              duration: icon.duration,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: icon.delay,
-              repeatType: 'mirror',
-            }}
-            style={{
-              width: icon.size,
-              height: icon.size,
-              borderRadius: Math.round(icon.size * 0.22),
-              background: 'rgba(8,4,22,0.9)',
-              border: '1px solid rgba(255,255,255,0.09)',
-              boxShadow: '0 8px 28px rgba(0,0,0,0.45)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Image
-              src={icon.src}
-              alt={icon.alt}
-              width={icon.size - 16}
-              height={icon.size - 16}
+            <div
               style={{
-                objectFit: 'contain',
-                ...(icon.white && { filter: 'brightness(0) invert(1)' }),
+                width: icon.size,
+                height: icon.size,
+                borderRadius: Math.round(icon.size * 0.22),
+                background: 'rgba(8,4,22,0.9)',
+                border: '1px solid rgba(255,255,255,0.09)',
+                boxShadow: '0 8px 28px rgba(0,0,0,0.45)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                animationName: 'icon-float',
+                animationDuration: `${icon.duration}s`,
+                animationDelay: `${icon.delay}s`,
+                animationTimingFunction: 'ease-in-out',
+                animationIterationCount: 'infinite',
+                animationDirection: 'alternate',
+                animationFillMode: 'both',
+                willChange: 'transform',
+                ['--fy0' as string]: `${icon.floatY[0]}px`,
+                ['--fy1' as string]: `${icon.floatY[1]}px`,
               }}
-            />
-          </motion.div>
+            >
+              <Image
+                src={icon.src}
+                alt={icon.alt}
+                width={icon.size - 16}
+                height={icon.size - 16}
+                style={{
+                  objectFit: 'contain',
+                  ...(icon.white && { filter: 'brightness(0) invert(1)' }),
+                }}
+              />
+            </div>
           </motion.div>
         </motion.div>
       ))}
+
+      <style>{`
+        @keyframes icon-float {
+          from { transform: translateY(var(--fy0)); }
+          to   { transform: translateY(var(--fy1)); }
+        }
+      `}</style>
     </motion.div>
   )
 }

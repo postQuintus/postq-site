@@ -1,19 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import Header from '@/components/Header'
 import VpnStatusWidget from '@/components/VpnStatusWidget'
-import HeroPhone from '@/components/HeroPhone'
 import BenefitsSection from '@/components/BenefitsSection'
 import PricingSection from '@/components/PricingSection'
 import FaqSection from '@/components/FaqSection'
+
+const HeroPhone = dynamic(() => import('@/components/HeroPhone'), { ssr: false })
 
 export default function HomePage() {
   return (
     <main className="relative w-full min-h-screen">
       {/* Global background orbs */}
-      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }} aria-hidden>
+      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }} aria-hidden>
         <div className="spotlight-orb spotlight-orb-1" />
         <div className="spotlight-orb spotlight-orb-2" />
       </div>
@@ -29,10 +31,10 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.2 }}
-            className="flex flex-col items-start gap-6 max-w-lg"
+            className="flex flex-col items-center md:items-start gap-6 max-w-lg w-full"
           >
             {/* Free trial pill */}
-            <div style={{
+            <div className="self-center md:self-start" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
@@ -53,6 +55,7 @@ export default function HomePage() {
             </div>
 
             <h1
+              className="text-center md:text-left"
               style={{
                 fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(2rem, 4vw, 3.25rem)',
@@ -68,6 +71,7 @@ export default function HomePage() {
             </h1>
 
             <p
+              className="text-center md:text-left"
               style={{
                 fontFamily: "'GT Eesti Pro Text', system-ui, -apple-system, sans-serif",
                 fontSize: '1rem',
@@ -81,7 +85,7 @@ export default function HomePage() {
               Пользуйтесь интернетом свободно и безопасно на всех устройствах.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }}>
+            <div className="self-center md:self-start" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }}>
               <motion.a
                 href="https://web.postq.space"
                 target="_blank"
@@ -111,8 +115,10 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Right – phone animation */}
-          <HeroPhone />
+          {/* Right – phone animation (desktop only) */}
+          <div className="hidden md:block">
+            <HeroPhone />
+          </div>
 
         </div>
       </section>
@@ -186,7 +192,7 @@ export default function HomePage() {
           height: 50vw;
           background: radial-gradient(circle, rgba(147,27,121,0.16) 0%, transparent 70%);
           bottom: -10%;
-          right: -5%;
+          right: 0;
           animation: orb2 22s ease-in-out infinite alternate;
         }
         @keyframes orb1 {

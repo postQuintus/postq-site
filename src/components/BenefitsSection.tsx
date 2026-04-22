@@ -12,7 +12,7 @@ const ITEMS = [
 
 export default function BenefitsSection() {
   return (
-    <section style={{ padding: '80px 0 40px', position: 'relative', zIndex: 1 }}>
+    <section className="benefits-section" style={{ position: 'relative', zIndex: 1 }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="benefits-grid">
           {ITEMS.map(({ icon: Icon, value, label }, i) => (
@@ -86,9 +86,18 @@ export default function BenefitsSection() {
           color: rgba(215,194,240,0.4);
           line-height: 1.5;
         }
-        @media (max-width: 600px) {
+        .benefits-section {
+          padding: 80px 0 40px;
+        }
+        @media (max-width: 767px) {
+          .benefits-section {
+            padding: 40px 0 24px;
+          }
           .benefits-grid {
             grid-template-columns: repeat(2, 1fr);
+          }
+          .benefit-card {
+            padding: 20px 16px 18px;
           }
         }
       `}</style>
