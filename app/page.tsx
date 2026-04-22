@@ -4,127 +4,164 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Header from '@/components/Header'
 import VpnStatusWidget from '@/components/VpnStatusWidget'
+import HeroPhone from '@/components/HeroPhone'
+import BenefitsSection from '@/components/BenefitsSection'
+import PricingSection from '@/components/PricingSection'
+import FaqSection from '@/components/FaqSection'
 
 export default function HomePage() {
   return (
-    <main className="relative w-full h-screen overflow-hidden" style={{ background: 'var(--bg)' }}>
-      <Header />
-
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+    <main className="relative w-full min-h-screen">
+      {/* Global background orbs */}
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }} aria-hidden>
         <div className="spotlight-orb spotlight-orb-1" />
         <div className="spotlight-orb spotlight-orb-2" />
       </div>
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3 }}
-          className="text-center max-w-3xl"
-        >
-          <p
-            style={{
-              fontFamily: "'GT Eesti Pro Text', system-ui, -apple-system, sans-serif",
-              fontSize: '14px',
-              fontWeight: 500,
-              letterSpacing: '0.28em',
-              textTransform: 'uppercase',
-              color: '#931b79',
-              marginBottom: '1rem',
-            }}
-          >
-            скоро будет
-          </p>
-          <h1
-            style={{
-              fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
-              fontSize: 'clamp(3rem, 7vw, 5.5rem)',
-              lineHeight: 0.95,
-              color: '#cf00a3',
-              textShadow: '0 0 50px rgba(207,0,163,0.24)',
-              margin: 0,
-            }}
-          >
-            сайт в разработке
-          </h1>
-          <p
-            style={{
-              fontFamily: "'GT Eesti Pro Text', system-ui, -apple-system, sans-serif",
-              fontSize: '1rem',
-              color: '#d7c2f0',
-              marginTop: '1.25rem',
-              maxWidth: '38rem',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              opacity: 0.95,
-            }}
-          >
-            Мы готовим новый сайт. Пока вы можете зайти в личный кабинет и в бота, а сюда вернуться чуть позже.
-          </p>
-        </motion.div>
+      <Header />
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col items-center gap-3"
-        >
-          <motion.a
-            href="https://t.me/postq_vpn_bot"
-            target="_blank"
-            rel="noopener"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="no-underline inline-block btn-glow"
-            style={{
-              fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
-              fontSize: '14px',
-              fontWeight: '500',
-              letterSpacing: '0.1em',
-              padding: '10px 28px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #cf00a3 0%, #931b79 100%)',
-              color: '#fff',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 0 24px rgba(207,0,163,0.45), 0 2px 8px rgba(0,0,0,0.3)',
-            }}
-          >
-            ▶ открыть бота
-          </motion.a>
-          <VpnStatusWidget />
-        </motion.div>
-      </div>
+      {/* Hero Section */}
+      <section className="relative w-full h-screen flex items-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 flex flex-col-reverse items-center gap-12 md:flex-row md:items-center md:justify-between">
 
+          {/* Left – text */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.2 }}
+            className="flex flex-col items-start gap-6 max-w-lg"
+          >
+            {/* Free trial pill */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '5px 12px',
+              borderRadius: '999px',
+              border: '1px solid rgba(207,0,163,0.25)',
+              background: 'rgba(207,0,163,0.07)',
+            }}>
+              <span style={{
+                fontFamily: "'GT Eesti Pro Text', system-ui, sans-serif",
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.75)',
+                letterSpacing: '0.02em',
+                whiteSpace: 'nowrap',
+              }}>
+                Пробный период — 1 день бесплатно
+              </span>
+            </div>
+
+            <h1
+              style={{
+                fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                fontWeight: 700,
+                lineHeight: 1.08,
+                color: '#cf00a3',
+                textShadow: '0 0 50px rgba(207,0,163,0.2)',
+                margin: 0,
+              }}
+            >
+              Свобода в сети.<br />
+              <span style={{ color: '#ffffff' }}>Безопасность<br />в каждом байте.</span>
+            </h1>
+
+            <p
+              style={{
+                fontFamily: "'GT Eesti Pro Text', system-ui, -apple-system, sans-serif",
+                fontSize: '1rem',
+                lineHeight: 1.7,
+                color: 'rgba(215,194,240,0.8)',
+                margin: 0,
+                maxWidth: '38rem',
+              }}
+            >
+              Шифрует весь ваш трафик и скрывает личные данные от посторонних глаз.
+              Пользуйтесь интернетом свободно и безопасно на всех устройствах.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }}>
+              <motion.a
+                href="https://web.postq.space"
+                target="_blank"
+                rel="noopener"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="no-underline inline-block btn-glow"
+                style={{
+                  fontFamily: "'GT Eesti Pro Display', system-ui, -apple-system, sans-serif",
+                  fontSize: '15px',
+                  fontWeight: 500,
+                  letterSpacing: '0.06em',
+                  padding: '12px 36px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #cf00a3 0%, #931b79 100%)',
+                  color: '#fff',
+                  whiteSpace: 'nowrap',
+                  boxShadow: '0 0 28px rgba(207,0,163,0.45), 0 2px 8px rgba(0,0,0,0.3)',
+                }}
+              >
+                Подключить VPN
+              </motion.a>
+
+              <div style={{ marginTop: '10px' }}>
+                <VpnStatusWidget />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right – phone animation */}
+          <HeroPhone />
+
+        </div>
+      </section>
+
+      <BenefitsSection />
+      <PricingSection />
+      <FaqSection />
+
+      {/* Footer */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
-        style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', rowGap: '8px' }}
+        transition={{ delay: 0.9 }}
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          borderTop: '1px solid rgba(207,0,163,0.08)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '16px',
+          flexWrap: 'wrap',
+          rowGap: '8px',
+          padding: '28px 24px 44px',
+        }}
       >
         <a
           href="https://t.me/postq_vpn_bot"
           target="_blank"
           rel="noopener noreferrer"
           className="no-underline"
-          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.55)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.3)')}
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.2)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.5)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.2)')}
         >
           @postq_vpn_bot
         </a>
-        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ color: 'rgba(215,194,240,0.1)', fontSize: '11px', userSelect: 'none' }}>·</span>
         <Link
           href="/privacy"
           className="no-underline"
-          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.55)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(147,27,121,0.3)')}
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.2)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.5)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.2)')}
         >
           политика конфиденциальности
         </Link>
-        <span style={{ color: 'rgba(147,27,121,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
-        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.08em', color: 'rgba(147,27,121,0.3)', whiteSpace: 'nowrap' }}>
+        <span style={{ color: 'rgba(215,194,240,0.1)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.15)', whiteSpace: 'nowrap' }}>
           © 2026 postq vpn
         </span>
       </motion.div>
@@ -133,22 +170,22 @@ export default function HomePage() {
         .spotlight-orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(80px);
+          filter: blur(90px);
           will-change: transform, opacity;
         }
         .spotlight-orb-1 {
-          width: 55vw;
-          height: 55vw;
+          width: 60vw;
+          height: 60vw;
           background: radial-gradient(circle, rgba(207,0,163,0.22) 0%, transparent 70%);
-          top: -10%;
-          left: -5%;
+          top: -15%;
+          left: -10%;
           animation: orb1 18s ease-in-out infinite alternate;
         }
         .spotlight-orb-2 {
-          width: 45vw;
-          height: 45vw;
+          width: 50vw;
+          height: 50vw;
           background: radial-gradient(circle, rgba(147,27,121,0.16) 0%, transparent 70%);
-          bottom: -15%;
+          bottom: -10%;
           right: -5%;
           animation: orb2 22s ease-in-out infinite alternate;
         }
@@ -168,8 +205,8 @@ export default function HomePage() {
           animation: btn-pulse 3s ease-in-out infinite;
         }
         @keyframes btn-pulse {
-          0%, 100% { box-shadow: 0 0 24px rgba(207,0,163,0.45), 0 2px 8px rgba(0,0,0,0.3); }
-          50%       { box-shadow: 0 0 40px rgba(207,0,163,0.7), 0 2px 8px rgba(0,0,0,0.3); }
+          0%, 100% { box-shadow: 0 0 28px rgba(207,0,163,0.4), 0 2px 12px rgba(0,0,0,0.3); }
+          50%       { box-shadow: 0 0 52px rgba(207,0,163,0.65), 0 2px 12px rgba(0,0,0,0.3); }
         }
       `}</style>
     </main>
