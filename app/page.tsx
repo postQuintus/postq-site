@@ -90,8 +90,9 @@ export default function HomePage() {
                 maxWidth: '38rem',
               }}
             >
-              Шифрует весь ваш трафик и&nbsp;скрывает личные данные от&nbsp;посторонних глаз.
-              Пользуйтесь интернетом свободно и&nbsp;безопасно на&nbsp;всех устройствах.
+              Шифрует весь ваш трафик и&nbsp;скрывает личные данные от&nbsp;посторонних глаз.<br className="hidden md:block" />
+              Пользуйтесь интернетом свободно и&nbsp;безопасно<br className="hidden md:block" />
+              на&nbsp;всех устройствах.
             </p>
 
             <div className="self-center md:self-start" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }}>
