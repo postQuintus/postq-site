@@ -21,20 +21,20 @@ interface AppIcon {
 }
 
 // Container: 380×540px. Phone: 200×400, centered → top:70, bottom:470.
-// Space above phone: 70px, below: 70px. Left/right: 90px each.
-// Left/right columns staggered by 70px vertically — no horizontal pairs.
+// Durations are chosen to avoid simple integer ratios → icons stay out of phase.
+// Delays are spread 0.3–3.8s so they start at very different cycle offsets.
 const ICONS: AppIcon[] = [
   // In front — diagonal corners
-  { src: '/icons/colored/Instagram.svg',  alt: 'Instagram', size: 80, floatY: [-8,  6], duration: 4.2, delay: 0,    appearDelay: 0.15,             style: { top: 6,      left: 20   } },
-  { src: '/icons/colored/Youtube.svg',    alt: 'YouTube',   size: 72, floatY: [-6,  9], duration: 3.9, delay: 0.25, appearDelay: 0.55,             style: { top: 32,     right: -12 } },
-  { src: '/icons/colored/X.svg',          alt: 'X',         size: 58, floatY: [-7,  5], duration: 4.0, delay: 0.1,  appearDelay: 0.35, white: true, style: { top: -14,    left: '50%', transform: 'translateX(-50%)' } },
-  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 0.8,  appearDelay: 0.7,              style: { bottom: -6,  left: 8    } },
-  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-7,  6], duration: 4.4, delay: 1.0,  appearDelay: 0.1,              style: { bottom: -12, right: 4   } },
+  { src: '/icons/colored/Instagram.svg',  alt: 'Instagram', size: 80, floatY: [-8,  7], duration: 5.2, delay: 0.8,  appearDelay: 0.15,             style: { top: 6,      left: 20   } },
+  { src: '/icons/colored/Youtube.svg',    alt: 'YouTube',   size: 72, floatY: [-7,  9], duration: 4.1, delay: 2.3,  appearDelay: 0.55,             style: { top: 32,     right: -12 } },
+  { src: '/icons/colored/X.svg',          alt: 'X',         size: 58, floatY: [-6,  5], duration: 6.3, delay: 1.5,  appearDelay: 0.35, white: true, style: { top: -14,    left: '50%', transform: 'translateX(-50%)' } },
+  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 3.1,  appearDelay: 0.7,              style: { bottom: -6,  left: 8    } },
+  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-8,  6], duration: 4.9, delay: 0.3,  appearDelay: 0.1,              style: { bottom: -12, right: 4   } },
   // Behind phone — side columns, overlap the frame
-  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 4.6, delay: 0.4,  appearDelay: 0.45, behind: true, style: { top: 160,   left: -14  } },
-  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-8,  5], duration: 3.7, delay: 0.35, appearDelay: 0.8,  behind: true, style: { top: 210,   right: -14 } },
-  { src: '/icons/colored/ChatGPT.svg',    alt: 'ChatGPT',   size: 68, floatY: [-6,  8], duration: 4.3, delay: 0.55, appearDelay: 0.25, white: true, behind: true, style: { top: 318,   left: -14  } },
-  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-6,  8], duration: 4.1, delay: 0.6,  appearDelay: 0.6,  behind: true, style: { top: 420,   right: -14 } },
+  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 7.1, delay: 1.9,  appearDelay: 0.45, behind: true, style: { top: 160,   left: -14  } },
+  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-7,  5], duration: 4.4, delay: 3.8,  appearDelay: 0.8,  behind: true, style: { top: 210,   right: -14 } },
+  { src: '/icons/colored/ChatGPT.svg',    alt: 'ChatGPT',   size: 68, floatY: [-6,  8], duration: 5.8, delay: 0.6,  appearDelay: 0.25, white: true, behind: true, style: { top: 318,   left: -14  } },
+  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-7,  8], duration: 3.6, delay: 2.5,  appearDelay: 0.6,  behind: true, style: { top: 360,   right: -14 } },
 ]
 
 
@@ -118,10 +118,23 @@ function VpnToggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
 
 export default function HeroPhone() {
   const [on, setOn] = useState(false)
+  const [scale, setScale] = useState(1)
 
   useEffect(() => {
     const t = setTimeout(() => setOn(true), 1600)
     return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    const update = () => {
+      // 56px header + 80px vertical breathing room = 136px reserved
+      const available = window.innerHeight - 136
+      // 560 = component height (540) + icon overflow above/below (~20px)
+      setScale(Math.min(1, Math.max(0.65, available / 560)))
+    }
+    update()
+    window.addEventListener('resize', update, { passive: true })
+    return () => window.removeEventListener('resize', update)
   }, [])
 
   return (
@@ -134,6 +147,8 @@ export default function HeroPhone() {
         width: 380,
         height: 540,
         flexShrink: 0,
+        transform: `scale(${scale})`,
+        transformOrigin: 'center center',
       }}
     >
       {/* ── Phone frame ─────────────────────────────────────────────── */}
