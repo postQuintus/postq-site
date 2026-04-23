@@ -20,21 +20,21 @@ interface AppIcon {
   style: React.CSSProperties
 }
 
-// Container: 380×540px. Phone: 200×400, centered → top:70, bottom:470.
-// Durations are chosen to avoid simple integer ratios → icons stay out of phase.
-// Delays are spread 0.3–3.8s so they start at very different cycle offsets.
+// Phone (200×400) centered in 380×540: left=90, right=290, top=70, bottom=470.
+// Behind icons overlap phone by 35-55px → phone body cuts them off (depth illusion).
+// Front icons overlap phone by 20-35px → they float visually in front of glass.
 const ICONS: AppIcon[] = [
-  // In front — diagonal corners
-  { src: '/icons/colored/Instagram.svg',  alt: 'Instagram', size: 80, floatY: [-8,  7], duration: 5.2, delay: 0.8,  appearDelay: 0.15,             style: { top: 6,      left: 20   } },
-  { src: '/icons/colored/Youtube.svg',    alt: 'YouTube',   size: 72, floatY: [-7,  9], duration: 4.1, delay: 2.3,  appearDelay: 0.55,             style: { top: 32,     right: -12 } },
-  { src: '/icons/colored/X.svg',          alt: 'X',         size: 58, floatY: [-6,  5], duration: 6.3, delay: 1.5,  appearDelay: 0.35, white: true, style: { top: -14,    left: '50%', transform: 'translateX(-50%)' } },
-  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 3.1,  appearDelay: 0.7,              style: { bottom: -6,  left: 8    } },
-  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-8,  6], duration: 4.9, delay: 0.3,  appearDelay: 0.1,              style: { bottom: -12, right: 4   } },
-  // Behind phone — side columns, overlap the frame
-  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 7.1, delay: 1.9,  appearDelay: 0.45, behind: true, style: { top: 160,   left: -14  } },
-  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-7,  5], duration: 4.4, delay: 3.8,  appearDelay: 0.8,  behind: true, style: { top: 210,   right: -14 } },
-  { src: '/icons/colored/ChatGPT.svg',    alt: 'ChatGPT',   size: 68, floatY: [-6,  8], duration: 5.8, delay: 0.6,  appearDelay: 0.25, white: true, behind: true, style: { top: 318,   left: -14  } },
-  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-7,  8], duration: 3.6, delay: 2.5,  appearDelay: 0.6,  behind: true, style: { top: 360,   right: -14 } },
+  // ── In front (z:3) — cluster at corners, partially over phone face ──────────
+  { src: '/icons/colored/Instagram.svg',  alt: 'Instagram', size: 80, floatY: [-8,  7], duration: 5.2, delay: 0.8,  appearDelay: 0.15,             style: { top: 18,    left: 42   } },   // right edge 122 > phone left 90  → +32px overlap
+  { src: '/icons/colored/Youtube.svg',    alt: 'YouTube',   size: 72, floatY: [-7,  9], duration: 4.1, delay: 2.3,  appearDelay: 0.55,             style: { top: 44,    right: 38  } },   // left edge 270 < phone right 290 → +20px overlap
+  { src: '/icons/colored/X.svg',          alt: 'X',         size: 58, floatY: [-6,  5], duration: 6.3, delay: 1.5,  appearDelay: 0.35, white: true, style: { top: -12,   left: '50%', transform: 'translateX(-50%)' } }, // centered, just above phone top
+  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 3.1,  appearDelay: 0.7,              style: { bottom: 12, left: 44   } },   // top 452 < phone bottom 470      → +18px overlap
+  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-8,  6], duration: 4.9, delay: 0.3,  appearDelay: 0.1,              style: { bottom: 16, right: 40  } },   // top 458, right 294 > phone right → corner overlap
+  // ── Behind phone (z:1) — deep overlap, cut off by phone body ────────────────
+  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 7.1, delay: 1.9,  appearDelay: 0.45, behind: true, style: { top: 116,  left: 60   } },  // right 142 > phone left 90 → 52px behind phone
+  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-7,  5], duration: 4.4, delay: 3.8,  appearDelay: 0.8,  behind: true, style: { top: 200,  right: 54  } },  // left 256 < phone right 290 → 34px behind
+  { src: '/icons/colored/ChatGPT.svg',    alt: 'ChatGPT',   size: 68, floatY: [-6,  8], duration: 5.8, delay: 0.6,  appearDelay: 0.25, white: true, behind: true, style: { top: 314,  left: 56   } }, // right 124 → 34px behind
+  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-7,  8], duration: 3.6, delay: 2.5,  appearDelay: 0.6,  behind: true, style: { top: 358,  right: 50  } },  // left 252 → 38px behind
 ]
 
 
