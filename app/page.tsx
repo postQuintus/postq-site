@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import VpnStatusWidget from '@/components/VpnStatusWidget'
 import BenefitsSection from '@/components/BenefitsSection'
@@ -12,6 +13,14 @@ import FaqSection from '@/components/FaqSection'
 const HeroPhone = dynamic(() => import('@/components/HeroPhone'), { ssr: false })
 
 export default function HomePage() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 40) setScrolled(true) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <main className="relative w-full min-h-screen">
       {/* Global background orbs */}
@@ -66,8 +75,8 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Свобода в сети.<br />
-              <span style={{ color: '#ffffff' }}>Безопасность<br />в каждом байте.</span>
+              Свобода в&nbsp;сети.<br />
+              <span style={{ color: '#ffffff' }}>Безопасность в&nbsp;каждом байте.</span>
             </h1>
 
             <p
@@ -81,8 +90,8 @@ export default function HomePage() {
                 maxWidth: '38rem',
               }}
             >
-              Шифрует весь ваш трафик и скрывает личные данные от посторонних глаз.
-              Пользуйтесь интернетом свободно и безопасно на всех устройствах.
+              Шифрует весь ваш трафик и&nbsp;скрывает личные данные от&nbsp;посторонних глаз.
+              Пользуйтесь интернетом свободно и&nbsp;безопасно на&nbsp;всех устройствах.
             </p>
 
             <div className="self-center md:self-start" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }}>
@@ -121,6 +130,48 @@ export default function HomePage() {
           </div>
 
         </div>
+
+        {/* Scroll indicator */}
+        <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
+        <AnimatePresence>
+        {!scrolled && <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, y: 4, transition: { duration: 0.2, delay: 0 } }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 6,
+            cursor: 'pointer',
+          }}
+          onClick={() => {
+            const next = document.getElementById('pricing') ?? document.querySelector('section + section')
+            next?.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          <span style={{
+            fontFamily: "'GT Eesti Pro Text', system-ui, sans-serif",
+            fontSize: '10px',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.15)',
+          }}>
+            далее
+          </span>
+          <motion.div
+            animate={{ y: [0, 3, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 5.5L8 10.5L13 5.5" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
+        </motion.div>}
+        </AnimatePresence>
+        </div>
+
       </section>
 
       <BenefitsSection />
@@ -150,24 +201,24 @@ export default function HomePage() {
           target="_blank"
           rel="noopener noreferrer"
           className="no-underline"
-          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.2)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.5)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.2)')}
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.4)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.7)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.4)')}
         >
           @postq_vpn_bot
         </a>
-        <span style={{ color: 'rgba(215,194,240,0.1)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ color: 'rgba(215,194,240,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
         <Link
           href="/privacy"
           className="no-underline"
-          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.2)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.5)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.2)')}
+          style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.4)', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.7)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(215,194,240,0.4)')}
         >
           политика конфиденциальности
         </Link>
-        <span style={{ color: 'rgba(215,194,240,0.1)', fontSize: '11px', userSelect: 'none' }}>·</span>
-        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.15)', whiteSpace: 'nowrap' }}>
+        <span style={{ color: 'rgba(215,194,240,0.2)', fontSize: '11px', userSelect: 'none' }}>·</span>
+        <span style={{ fontFamily: "'GT Eesti Pro Display', system-ui, sans-serif", fontSize: '11px', letterSpacing: '0.07em', color: 'rgba(215,194,240,0.35)', whiteSpace: 'nowrap' }}>
           © 2026 postq vpn
         </span>
       </motion.div>

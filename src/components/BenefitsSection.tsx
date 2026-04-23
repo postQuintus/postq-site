@@ -7,7 +7,7 @@ const ITEMS = [
   { icon: ShieldCheck,       value: '99.9%',   label: 'Время работы' },
   { icon: CalendarDays,      value: '1 день',  label: 'Бесплатный пробный период' },
   { icon: Database,          value: '300 ГБ',  label: 'Трафик на пробный период' },
-  { icon: MonitorSmartphone, value: '3',        label: 'Устройства одновременно' },
+  { icon: MonitorSmartphone, value: 'от 3 до 10', label: 'Устройств одновременно' },
 ]
 
 export default function BenefitsSection() {

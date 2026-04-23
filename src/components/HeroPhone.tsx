@@ -28,13 +28,13 @@ const ICONS: AppIcon[] = [
   { src: '/icons/colored/Instagram.svg',  alt: 'Instagram', size: 80, floatY: [-8,  7], duration: 5.2, delay: 0.8,  appearDelay: 0.15,             style: { top: 18,    left: 42   } },   // right edge 122 > phone left 90  → +32px overlap
   { src: '/icons/colored/Youtube.svg',    alt: 'YouTube',   size: 72, floatY: [-7,  9], duration: 4.1, delay: 2.3,  appearDelay: 0.55,             style: { top: 44,    right: 38  } },   // left edge 270 < phone right 290 → +20px overlap
   { src: '/icons/colored/X.svg',          alt: 'X',         size: 58, floatY: [-6,  5], duration: 6.3, delay: 1.5,  appearDelay: 0.35, white: true, style: { top: -12,   left: '50%', transform: 'translateX(-50%)' } }, // centered, just above phone top
-  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 3.1,  appearDelay: 0.7,              style: { bottom: 12, left: 44   } },   // top 452 < phone bottom 470      → +18px overlap
-  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-8,  6], duration: 4.9, delay: 0.3,  appearDelay: 0.1,              style: { bottom: 16, right: 40  } },   // top 458, right 294 > phone right → corner overlap
+  { src: '/icons/colored/Tik%20Tok.svg',  alt: 'TikTok',    size: 76, floatY: [-5,  9], duration: 3.8, delay: 3.1,  appearDelay: 0.7,              style: { bottom: 36, left: 44   } },
+  { src: '/icons/colored/Netflix.svg',    alt: 'Netflix',   size: 66, floatY: [-8,  6], duration: 4.9, delay: 0.3,  appearDelay: 0.1,              style: { bottom: 16, right: 96  } },
   // ── Behind phone (z:1) — deep overlap, cut off by phone body ────────────────
-  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 7.1, delay: 1.9,  appearDelay: 0.45, behind: true, style: { top: 116,  left: 60   } },  // right 142 > phone left 90 → 52px behind phone
-  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-7,  5], duration: 4.4, delay: 3.8,  appearDelay: 0.8,              style: { top: 200,  right: 54  } },
+  { src: '/icons/colored/Discord.svg',    alt: 'Discord',   size: 82, floatY: [-9,  7], duration: 7.1, delay: 1.9,  appearDelay: 0.45, behind: true, style: { top: 148,  left: 44   } },
+  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-7,  8], duration: 3.6, delay: 2.5,  appearDelay: 0.6,              style: { top: 200,  right: 36  } },
   { src: '/icons/colored/Grok.svg',       alt: 'Grok',      size: 68, floatY: [-6,  8], duration: 5.8, delay: 0.6,  appearDelay: 0.25, white: true, behind: true, style: { top: 314,  left: 14   } },
-  { src: '/icons/colored/Telegram.svg',   alt: 'Telegram',  size: 78, floatY: [-7,  8], duration: 3.6, delay: 2.5,  appearDelay: 0.6,  behind: true, style: { top: 358,  right: 50  } },  // left 252 → 38px behind
+  { src: '/icons/colored/WhatsApp.svg',   alt: 'WhatsApp',  size: 70, floatY: [-7,  5], duration: 4.4, delay: 3.8,  appearDelay: 0.8,  behind: true, style: { top: 358,  right: 50  } },  // left 252 → 38px behind
 ]
 
 
