@@ -30,6 +30,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" suppressHydrationWarning>
+      <head>
+        {/* Preload the two fonts needed for above-the-fold text */}
+        <link rel="preload" href="/fonts/gteestiprodisplay_bold.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/gteestiprotext_regular.woff2" as="font" type="font/woff2" crossOrigin="" />
+        {/* Pre-establish connection for the status API widget */}
+        <link rel="preconnect" href="https://status.postq.space" />
+      </head>
       <body>{children}</body>
     </html>
   )

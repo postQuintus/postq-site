@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import VpnStatusWidget from '@/components/VpnStatusWidget'
-import BenefitsSection from '@/components/BenefitsSection'
-import PricingSection from '@/components/PricingSection'
-import FaqSection from '@/components/FaqSection'
 
 const HeroPhone = dynamic(() => import('@/components/HeroPhone'), { ssr: false })
+const BenefitsSection = dynamic(() => import('@/components/BenefitsSection'))
+const PricingSection = dynamic(() => import('@/components/PricingSection'))
+const FaqSection = dynamic(() => import('@/components/FaqSection'))
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false)
@@ -228,8 +228,9 @@ export default function HomePage() {
         .spotlight-orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(90px);
-          will-change: transform, opacity;
+          filter: blur(80px);
+          will-change: transform;
+          contain: strict;
         }
         .spotlight-orb-1 {
           width: 60vw;
@@ -237,7 +238,7 @@ export default function HomePage() {
           background: radial-gradient(circle, rgba(207,0,163,0.22) 0%, transparent 70%);
           top: -15%;
           left: -10%;
-          animation: orb1 18s ease-in-out infinite alternate;
+          animation: orb1 20s ease-in-out infinite alternate;
         }
         .spotlight-orb-2 {
           width: 50vw;
@@ -245,19 +246,15 @@ export default function HomePage() {
           background: radial-gradient(circle, rgba(147,27,121,0.16) 0%, transparent 70%);
           bottom: -10%;
           right: 0;
-          animation: orb2 22s ease-in-out infinite alternate;
+          animation: orb2 25s ease-in-out infinite alternate;
         }
         @keyframes orb1 {
-          0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
-          33%  { transform: translate(8vw, 12vh) scale(1.1); opacity: 1; }
-          66%  { transform: translate(20vw, 5vh) scale(0.95); opacity: 0.7; }
-          100% { transform: translate(5vw, 20vh) scale(1.05); opacity: 0.9; }
+          from { transform: translate(0, 0) scale(1); }
+          to   { transform: translate(12vw, 18vh) scale(1.08); }
         }
         @keyframes orb2 {
-          0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
-          33%  { transform: translate(-12vw, -8vh) scale(1.15); opacity: 0.85; }
-          66%  { transform: translate(-5vw, -18vh) scale(0.9); opacity: 0.7; }
-          100% { transform: translate(-18vw, -5vh) scale(1.1); opacity: 0.8; }
+          from { transform: translate(0, 0) scale(1); }
+          to   { transform: translate(-14vw, -12vh) scale(1.1); }
         }
         .btn-glow {
           animation: btn-pulse 3s ease-in-out infinite;
