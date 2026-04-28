@@ -232,7 +232,6 @@ export default function HomePage() {
           border-radius: 50%;
           filter: blur(80px);
           will-change: transform;
-          contain: strict;
         }
         .spotlight-orb-1 {
           width: 60vw;
