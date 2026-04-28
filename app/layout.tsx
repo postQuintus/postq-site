@@ -2,18 +2,37 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'postq vpn',
-  description: 'Безопасный и быстрый VPN сервис',
+  title: {
+    default: 'postq VPN — безопасный VPN с оплатой картами РФ',
+    template: '%s | postq VPN',
+  },
+  description: 'postq VPN — быстрый и надёжный VPN-сервис с серверами по всему миру. Оплата картами РФ, международными картами и криптовалютой. Поддержка iOS, Android, Windows, macOS. Пробный день бесплатно.',
+  keywords: ['VPN', 'купить VPN', 'VPN Россия', 'VPN для телеграм', 'VPN для Instagram', 'безопасный VPN', 'быстрый VPN', 'VPN оплата картой РФ', 'postq vpn'],
   manifest: '/manifest.json',
   icons: {
     icon: '/icons/icon.svg',
     apple: '/icons/apple-touch-icon.png',
   },
+  alternates: {
+    canonical: 'https://postq.space',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
-    title: 'postq vpn',
-    description: 'Безопасный и быстрый VPN сервис',
+    title: 'postq VPN — безопасный VPN с оплатой картами РФ',
+    description: 'Быстрый и надёжный VPN-сервис. Оплата картами РФ, международными и криптовалютой. Пробный день бесплатно.',
     url: 'https://postq.space',
-    siteName: 'postq vpn',
+    siteName: 'postq VPN',
+    locale: 'ru_RU',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'postq VPN — безопасный VPN с оплатой картами РФ',
+    description: 'Быстрый и надёжный VPN-сервис. Оплата картами РФ, международными и криптовалютой.',
   },
 }
 

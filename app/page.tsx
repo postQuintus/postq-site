@@ -22,8 +22,44 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://postq.space/#org',
+        name: 'postq VPN',
+        url: 'https://postq.space',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          url: 'https://t.me/postq_support',
+        },
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: 'postq VPN',
+        applicationCategory: 'SecurityApplication',
+        operatingSystem: 'iOS, Android, Windows, macOS',
+        description: 'Быстрый и надёжный VPN-сервис с серверами по всему миру. Оплата картами РФ, международными и криптовалютой.',
+        url: 'https://postq.space',
+        publisher: { '@id': 'https://postq.space/#org' },
+        offers: [
+          { '@type': 'Offer', name: 'Стандартный', priceCurrency: 'RUB', price: '190' },
+          { '@type': 'Offer', name: 'Премиум',     priceCurrency: 'RUB', price: '300' },
+          { '@type': 'Offer', name: 'Семейная',    priceCurrency: 'RUB', price: '500' },
+          { '@type': 'Offer', name: 'Командный',   priceCurrency: 'RUB', price: '900' },
+        ],
+      },
+    ],
+  }
+
   return (
     <main className="relative w-full min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Global background orbs */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0, overflow: 'clip' }} aria-hidden>
         <div className="spotlight-orb spotlight-orb-1" />
