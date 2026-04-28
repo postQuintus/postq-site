@@ -28,11 +28,13 @@ export const metadata: Metadata = {
     siteName: 'postq VPN',
     locale: 'ru_RU',
     type: 'website',
+    images: [{ url: 'https://postq.space/og-image.png', width: 1200, height: 630, alt: 'postq VPN' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'postq VPN — безопасный VPN с оплатой картами РФ',
     description: 'Быстрый и надёжный VPN-сервис. Оплата картами РФ, международными и криптовалютой.',
+    images: ['https://postq.space/og-image.png'],
   },
 }
 
