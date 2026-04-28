@@ -9,6 +9,7 @@ import PersonalAccountButton from './PersonalAccountButton'
 
 const NAV_LINKS = [
     { label: 'Тарифы',          href: '#pricing',                    external: false },
+    { label: 'Как подключить',  href: '#howto',                      external: false },
     { label: 'FAQ',              href: '#faq',                        external: false },
     { label: 'Статус серверов',  href: 'https://status.postq.space',  external: true  },
 ]

@@ -27,7 +27,7 @@ const STEPS = [
 
 export default function HowToSection() {
   return (
-    <section className="howto-section" style={{ position: 'relative', zIndex: 1 }}>
+    <section id="howto" className="howto-section" style={{ position: 'relative', zIndex: 1 }}>
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Heading */}
