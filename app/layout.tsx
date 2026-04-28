@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     default: 'postq VPN — безопасный VPN с оплатой картами РФ',
     template: '%s | postq VPN',
   },
-  description: 'postq VPN — быстрый и надёжный VPN-сервис с серверами по всему миру. Оплата картами РФ, международными картами и криптовалютой. Поддержка iOS, Android, Windows, macOS. Пробный день бесплатно.',
+  description: 'postq VPN — шифрует весь трафик и открывает доступ к любым сайтам и сервисам. Высокая скорость, серверы по всему миру, поддержка iOS, Android, Windows и macOS. Без логов и слежки. Подключение за одну минуту. Первый день бесплатно.',
   keywords: ['VPN', 'купить VPN', 'VPN Россия', 'VPN для телеграм', 'VPN для Instagram', 'безопасный VPN', 'быстрый VPN', 'VPN оплата картой РФ', 'postq vpn'],
   manifest: '/manifest.json',
   icons: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'postq VPN — безопасный VPN с оплатой картами РФ',
-    description: 'Быстрый и надёжный VPN-сервис. Оплата картами РФ, международными и криптовалютой. Пробный день бесплатно.',
+    description: 'Шифрует трафик и открывает доступ к любым сайтам. Без логов и слежки. Подключение за одну минуту. Первый день бесплатно.',
     url: 'https://postq.space',
     siteName: 'postq VPN',
     locale: 'ru_RU',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'postq VPN — безопасный VPN с оплатой картами РФ',
-    description: 'Быстрый и надёжный VPN-сервис. Оплата картами РФ, международными и криптовалютой.',
+    description: 'Шифрует трафик и открывает доступ к любым сайтам. Без логов и слежки. Подключение за одну минуту. Первый день бесплатно.',
     images: ['https://postq.space/og-image.png'],
   },
 }
