@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <main className="relative w-full min-h-screen">
       {/* Global background orbs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }} aria-hidden>
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0, overflow: 'clip' }} aria-hidden>
         <div className="spotlight-orb spotlight-orb-1" />
         <div className="spotlight-orb spotlight-orb-2" />
       </div>
@@ -230,28 +230,39 @@ export default function HomePage() {
         .spotlight-orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(80px);
+          -webkit-filter: blur(70px);
+          filter: blur(70px);
           will-change: transform;
         }
         .spotlight-orb-1 {
-          width: 60vw;
-          height: 60vw;
-          background: radial-gradient(circle, rgba(207,0,163,0.22) 0%, transparent 70%);
-          top: -15%;
-          left: -10%;
+          width: 70vw;
+          height: 70vw;
+          background: radial-gradient(circle, rgba(207,0,163,0.28) 0%, transparent 70%);
+          top: -20%;
+          left: -15%;
+          -webkit-animation: orb1 20s ease-in-out infinite alternate;
           animation: orb1 20s ease-in-out infinite alternate;
         }
         .spotlight-orb-2 {
-          width: 50vw;
-          height: 50vw;
-          background: radial-gradient(circle, rgba(147,27,121,0.16) 0%, transparent 70%);
-          bottom: -10%;
-          right: 0;
+          width: 60vw;
+          height: 60vw;
+          background: radial-gradient(circle, rgba(147,27,121,0.22) 0%, transparent 70%);
+          bottom: -15%;
+          right: -5%;
+          -webkit-animation: orb2 25s ease-in-out infinite alternate;
           animation: orb2 25s ease-in-out infinite alternate;
+        }
+        @-webkit-keyframes orb1 {
+          from { -webkit-transform: translate(0, 0) scale(1); transform: translate(0, 0) scale(1); }
+          to   { -webkit-transform: translate(12vw, 18vh) scale(1.08); transform: translate(12vw, 18vh) scale(1.08); }
         }
         @keyframes orb1 {
           from { transform: translate(0, 0) scale(1); }
           to   { transform: translate(12vw, 18vh) scale(1.08); }
+        }
+        @-webkit-keyframes orb2 {
+          from { -webkit-transform: translate(0, 0) scale(1); transform: translate(0, 0) scale(1); }
+          to   { -webkit-transform: translate(-14vw, -12vh) scale(1.1); transform: translate(-14vw, -12vh) scale(1.1); }
         }
         @keyframes orb2 {
           from { transform: translate(0, 0) scale(1); }
