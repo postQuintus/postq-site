@@ -10,6 +10,7 @@ import VpnStatusWidget from '@/components/VpnStatusWidget'
 const HeroPhone = dynamic(() => import('@/components/HeroPhone'), { ssr: false })
 const BenefitsSection = dynamic(() => import('@/components/BenefitsSection'))
 const PricingSection = dynamic(() => import('@/components/PricingSection'))
+const HowToSection = dynamic(() => import('@/components/HowToSection'))
 const FaqSection = dynamic(() => import('@/components/FaqSection'))
 
 export default function HomePage() {
@@ -177,6 +178,7 @@ export default function HomePage() {
 
       <BenefitsSection />
       <PricingSection />
+      <HowToSection />
       <FaqSection />
 
       {/* Footer */}
