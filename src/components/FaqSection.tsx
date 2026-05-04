@@ -31,7 +31,7 @@ const FAQS = [
   },
   {
     q: 'Что делать, если VPN не работает?',
-    a: 'Попробуйте обновить подписку и/или сменить сервер. Если проблема сохраняется — напишите в поддержку @postq_support, мы быстро разберёмся в чём проблема.',
+    a: 'Попробуйте обновить подписку и/или сменить сервер. Если проблема сохраняется — напишите в поддержку @postq_support_vpn_bot, мы быстро разберёмся в чём проблема.',
   },
 ]
 
@@ -178,7 +178,7 @@ export default function FaqSection() {
             Не нашли ответ? — мы всегда рады помочь.
           </p>
           <a
-            href="https://t.me/postq_support"
+            href="https://t.me/postq_support_vpn_bot"
             target="_blank"
             rel="noopener noreferrer"
             style={{

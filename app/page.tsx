@@ -33,7 +33,7 @@ export default function HomePage() {
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer support',
-          url: 'https://t.me/postq_support',
+          url: 'https://t.me/postq_support_vpn_bot',
         },
       },
       {
